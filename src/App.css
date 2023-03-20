@@ -835,18 +835,6 @@ order: 0;
 flex-grow: 0;
 }
 
-.ant-modal .ant-modal-close-x{
-  width: 24px;
-height: 24px;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 1;
-flex-grow: 0;
-}
-
 .ant-modal .ant-modal-content{
   display: flex;
 flex-direction: column;
