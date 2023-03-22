@@ -53,12 +53,13 @@ function Title(props) {
       const eleBold = document.getElementsByClassName('bold')[0];
       if(eleBold) {
         if(eleBold.classList.contains('active')) {
-          eleBold.classList.add('active')
-
-        } else {
           eleBold.classList.remove('active')
+        } else {
+          eleBold.classList.add('active')
         }
       }
+
+      
       // if(eleBold) {
       //   eleBold.classList.add('active')
       // }else{
@@ -67,9 +68,12 @@ function Title(props) {
 
       const eleInput = document.getElementsByClassName('box_request1')[0];
       if(eleInput) {
-        eleInput.classList.add('active')
-      }  else {
-        eleInput.classList.remove('active')
+        if(eleInput.classList.contains('active')) {
+          eleInput.classList.remove('active')
+
+        } else {
+          eleInput.classList.add('active')
+        }
       }
   }
 
