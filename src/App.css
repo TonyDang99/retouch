@@ -633,15 +633,15 @@ img {
 }
 
 
-.box_request1.active {
+.box_request1.activebold {
   font-weight: 700;
 }
 
-.box_request1.abcd {
+.box_request1.activeitalic {
   font-style: italic;
 }
 
-.box_request1.bcd {
+.box_request1.activeunderline {
   text-decoration:underline;
 }
 
@@ -679,9 +679,36 @@ img {
   cursor: pointer;
 }
 
-.bold.active {
-  background-color: red;
-  padding: 4px;
+.bold.activebold {
+  background: dimgrey;
+}
+
+.italic.activeitalic{
+  background: dimgrey;
+}
+
+.underline.activeunderline{
+  background: dimgrey;
+}
+
+.image.activeimage{
+  background: #EDEDED;
+}
+
+.image2.activeimage2{
+  background: #EDEDED;
+}
+
+.image3.activeimage3{
+  background: #EDEDED;
+}
+
+.image4.activeimage4{
+  background: #EDEDED;
+}
+
+.image5.activeimage5{
+  background: #EDEDED;
 }
 
 .dialog_text {
@@ -962,7 +989,22 @@ img {
 }
 
 .ant-input {
-  border: none
+  border: none;
+  box-sizing: border-box;
+  border-radius: 8px 8px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  /* border: 1px solid rgba(150, 160, 175, 0.3); */
+  border-radius: 8px;
+}
+
+.box_input{
+  border: none;
+  box-sizing: border-box;
+  border-radius: 8px 8px 0px 0px
 }
 
 .box_image {

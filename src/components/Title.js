@@ -8,6 +8,8 @@ import { addRetouchs } from "../redux/reducer";
 import { Button, Modal } from 'antd';
 import { Input, Select, Space } from 'antd';
 import RetouchItem from './RetouchItem';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,13 +25,17 @@ const mapDispatchToProps = (dispatch) => {
 
 function Title(props) {
 
-  const [retouch, setRetouch] = useState("");
+  const [retouch, setRetouch ] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { 
+    
     setRetouch(e.target.value);
   };
 
   const add = () => {
+    // if(!retouch.text || /^\s*$/.test(retouch.text)){
+    //   return;
+    // }
     if (retouch === "") {
       alert("Input is Empty");
     } else {
@@ -50,66 +56,122 @@ function Title(props) {
   };
 
   const handleToggle = () => {
-      const eleBold = document.getElementsByClassName('bold')[0];
-      if(eleBold) {
-        if(eleBold.classList.contains('active')) {
-          eleBold.classList.add('active')
-
-        } else {
-          eleBold.classList.remove('active')
-        }
+    const eleBold = document.getElementsByClassName('bold')[0];
+    if(eleBold) {
+      if(eleBold.classList.contains('activebold')) {
+        eleBold.classList.remove('activebold')
+      } else {
+        eleBold.classList.add('activebold')
       }
-      // if(eleBold) {
-      //   eleBold.classList.add('active')
-      // }else{
-      //   eleBold.classList.remove('active')
-      // }
-
+    }
       const eleInput = document.getElementsByClassName('box_request1')[0];
       if(eleInput) {
-        eleInput.classList.add('active')
-      }  else {
-        eleInput.classList.remove('active')
+        if(eleInput.classList.contains('activebold')) {
+          eleInput.classList.remove('activebold')
+
+        } else {
+          eleInput.classList.add('activebold')
+        }
       }
   }
 
   const handleToggle2 = () => {
     const eleItalic = document.getElementsByClassName('italic')[0];
     if(eleItalic) {
-      if(eleItalic.classList.contains('abcd')) {
-        eleItalic.classList.add('abcd')
-
+      if(eleItalic.classList.contains('activeitalic')) {
+        eleItalic.classList.remove('activeitalic')
       } else {
-        eleItalic.classList.remove('abcd')
+        eleItalic.classList.add('activeitalic')
       }
     }
 
     const eleInput = document.getElementsByClassName('box_request1')[0];
-    if(eleInput) {
-      eleInput.classList.add('abcd')
-    }  else {
-      eleInput.classList.remove('abcd')
-    }
+      if(eleInput) {
+        if(eleInput.classList.contains('activeitalic')) {
+          eleInput.classList.remove('activeitalic')
+
+        } else {
+          eleInput.classList.add('activeitalic')
+        }
+      }
 }
 
 const handleToggle3 = () => {
   const eleUnderline = document.getElementsByClassName('underline')[0];
   if(eleUnderline) {
-    if(eleUnderline.classList.contains('bcd')) {
-      eleUnderline.classList.add('bcd')
-
+    if(eleUnderline.classList.contains('activeunderline')) {
+      eleUnderline.classList.remove('activeunderline')
     } else {
-      eleUnderline.classList.remove('bcd')
+      eleUnderline.classList.add('activeunderline')
     }
   }
 
   const eleInput = document.getElementsByClassName('box_request1')[0];
-  if(eleInput) {
-    eleInput.classList.add('bcd')
-  }  else {
-    eleInput.classList.remove('bcd')
+      if(eleInput) {
+        if(eleInput.classList.contains('activeunderline')) {
+          eleInput.classList.remove('activeunderline')
+
+        } else {
+          eleInput.classList.add('activeunderline')
+        }
+      }
+}
+
+const handleToggle4 = () => {
+  const eleImage = document.getElementsByClassName('image')[0];
+  if(eleImage) {
+    if(eleImage.classList.contains('activeimage')) {
+      eleImage.classList.remove('activeimage')
+    } else {
+      eleImage.classList.add('activeimage')
+    }
   }
 }
+
+const handleToggle5 = () => {
+  const eleImage2 = document.getElementsByClassName('image2')[0];
+  if(eleImage2) {
+    if(eleImage2.classList.contains('activeimage2')) {
+      eleImage2.classList.remove('activeimage2')
+    } else {
+      eleImage2.classList.add('activeimage2')
+    }
+  }
+}
+
+const handleToggle6 = () => {
+  const eleImage3 = document.getElementsByClassName('image3')[0];
+  if(eleImage3) {
+    if(eleImage3.classList.contains('activeimage3')) {
+      eleImage3.classList.remove('activeimage3')
+    } else {
+      eleImage3.classList.add('activeimage3')
+    }
+  }
+}
+
+const handleToggle7 = () => {
+  const eleImage4 = document.getElementsByClassName('image4')[0];
+  if(eleImage4) {
+    if(eleImage4.classList.contains('activeimage4')) {
+      eleImage4.classList.remove('activeimage4')
+    } else {
+      eleImage4.classList.add('activeimage4')
+    }
+  }
+}
+
+const handleToggle8 = () => {
+  const eleImage5 = document.getElementsByClassName('image5')[0];
+  if(eleImage5) {
+    if(eleImage5.classList.contains('activeimage5')) {
+      eleImage5.classList.remove('activeimage5')
+    } else {
+      eleImage5.classList.add('activeimage5')
+    }
+  }
+}
+
 
   const addRequest = () => {
     if (retouchRequest === "") {
@@ -173,8 +235,8 @@ const handleToggle3 = () => {
                 <input
                   type={text}
                   onChange={(e) => handleChange(e)}
-                  className='box_text'
-                  value={retouch} />
+                   value={retouch}
+                 className='box_text' />
               </div>
 
               <div className='box_item'>
@@ -233,20 +295,38 @@ const handleToggle3 = () => {
                   </p>
                 </div>
                 <div className='box_request'>
-                  <input
+                  <textarea 
                     type={text}
                     className='box_request1'
                     onChange={(e) => handleChangeRequest(e)}
                     value={retouchRequest}
                   />
                   <div className='box_request2'>
+                  <CKEditor
+                    editor={ ClassicEditor }
+                    data="<p>Hello from CKEditor 5!</p>"
+                    onReady={ editor => {
+                        // You can store the "editor" and use when it is needed.
+                        console.log( 'Editor is ready to use!', editor );
+                    } }
+                    onChange={ ( event, editor ) => {
+                        const data = editor.getData();
+                        console.log( { event, editor, data } );
+                    } }
+                    onBlur={ ( event, editor ) => {
+                        console.log( 'Blur.', editor );
+                    } }
+                    onFocus={ ( event, editor ) => {
+                        console.log( 'Focus.', editor );
+                    } }
+                />
                     <div className='box_requesticon1' >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6667 6.66671C11.403 6.66671 12 6.06975 12 5.33337C12 4.59699 11.403 4.00004 10.6667 4.00004C9.93029 4.00004 9.33333 4.59699 9.33333 5.33337C9.33333 6.06975 9.93029 6.66671 10.6667 6.66671Z" fill="#A3A3A3" />
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M1.33333 3.33337C1.33333 2.2288 2.22876 1.33337 3.33333 1.33337H12.6667C13.7712 1.33337 14.6667 2.2288 14.6667 3.33337V12.6667C14.6667 13.7713 13.7712 14.6667 12.6667 14.6667H3.33333C2.22876 14.6667 1.33333 13.7713 1.33333 12.6667V3.33337ZM3.33333 2.66671H12.6667C13.0349 2.66671 13.3333 2.96518 13.3333 3.33337V12.6667C13.3333 12.8186 13.2825 12.9587 13.197 13.0708C13.1765 13.0436 13.1544 13.017 13.1306 12.991L7.04603 6.35329C6.22784 5.46072 4.81044 5.49418 4.03528 6.42437L2.66667 8.06671V3.33337C2.66667 2.96518 2.96514 2.66671 3.33333 2.66671ZM2.66667 10.1494V12.6667C2.66667 13.0349 2.96514 13.3334 3.33333 13.3334H11.6357L6.06316 7.25425C5.79043 6.95673 5.31796 6.96789 5.05958 7.27795L2.66667 10.1494Z" fill="#A3A3A3" />
                       </svg>
                     </div>
-                    <div className='box_requesticon1 bold' onClick={() => handleToggle()}>
+                    <div className='box_requesticon1 bold' onClick={() => handleToggle()} >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M4 4.18182C4 2.97683 4.97683 2 6.18182 2H8.66667C10.5076 2 12 3.49238 12 5.33333C12 6.28714 11.5994 7.14738 10.9573 7.75497C11.9771 8.32499 12.6667 9.4153 12.6667 10.6667C12.6667 12.5076 11.1743 14 9.33333 14H6.16667C4.97005 14 4 13.03 4 11.8333V4.18182ZM6.18182 3.33333H8.66667C9.77124 3.33333 10.6667 4.22876 10.6667 5.33333C10.6667 6.4379 9.77124 7.33333 8.66667 7.33333H5.33333V4.18182C5.33333 3.71321 5.71321 3.33333 6.18182 3.33333ZM5.33333 8.66667V11.8333C5.33333 12.2936 5.70643 12.6667 6.16667 12.6667H9.33333C10.4379 12.6667 11.3333 11.7712 11.3333 10.6667C11.3333 9.5621 10.4379 8.66667 9.33333 8.66667H5.33333Z" fill="#A3A3A3" />
                       </svg>
@@ -320,7 +400,10 @@ const handleToggle3 = () => {
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99998 12C7.99998 11.4477 8.4477 11 8.99998 11H15C15.5523 11 16 11.4477 16 12C16 12.5523 15.5523 13 15 13H8.99998C8.4477 13 7.99998 12.5523 7.99998 12Z" fill="#A3A3A3" />
                     </svg>
                   </div>
-                  <Input />
+                  {/* <div className='box_input'>
+                  <input />
+                  </div> */}
+                  <Input/>
                   <div className='box_requesticon3'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6 2L12 5.75L6 9.5L0 5.75L6 2ZM18 2L24 5.75L18 9.5L12 5.75L18 2ZM0 13.25L6 9.5L12 13.25L6 17L0 13.25ZM18 9.5L24 13.25L18 17L12 13.25L18 9.5ZM6 18.25L12 14.5L18 18.25L12 22L6 18.25Z" fill="#A3A3A3" />
@@ -335,19 +418,19 @@ const handleToggle3 = () => {
                   </p>
                 </div>
                 <div className='box_output'>
-                  <button className='box_image'>
+                  <button className='box_image image'  onClick={() => handleToggle4()}>
                     <p>PSD</p>
                   </button>
-                  <button className='box_image'>
+                  <button className='box_image image2' onClick={() => handleToggle5()}>
                     <p>JPG</p>
                   </button>
-                  <button className='box_image'>
+                  <button className='box_image image3' onClick={() => handleToggle6()}>
                     <p>PNG</p>
                   </button>
-                  <button className='box_image'>
+                  <button className='box_image image4'  onClick={() => handleToggle7()}>
                     <p>TIFF</p>
                   </button>
-                  <button className='box_image'>
+                  <button className='box_image image5'  onClick={() => handleToggle8()}>
                     <p>JPEG</p>
                   </button>
                 </div>
