@@ -56,22 +56,26 @@ function Title(props) {
   };
 
   const handleToggle = () => {
-    const eleBold = document.getElementsByClassName('bold')[0];
-    if(eleBold) {
-      if(eleBold.classList.contains('activebold')) {
-        eleBold.classList.remove('activebold')
-      } else {
-        eleBold.classList.add('activebold')
-      }
-    }
-      const eleInput = document.getElementsByClassName('box_request1')[0];
-      if(eleInput) {
-        if(eleInput.classList.contains('activebold')) {
-          eleInput.classList.remove('activebold')
+      const eleBold = document.getElementsByClassName('bold')[0];
+      if(eleBold) {
+        if(eleBold.classList.contains('active')) {
+          eleBold.classList.add('active')
 
         } else {
-          eleInput.classList.add('activebold')
+          eleBold.classList.remove('active')
         }
+      }
+      // if(eleBold) {
+      //   eleBold.classList.add('active')
+      // }else{
+      //   eleBold.classList.remove('active')
+      // }
+
+      const eleInput = document.getElementsByClassName('box_request1')[0];
+      if(eleInput) {
+        eleInput.classList.add('active')
+      }  else {
+        eleInput.classList.remove('active')
       }
   }
 
