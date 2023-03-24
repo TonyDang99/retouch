@@ -56,15 +56,14 @@ function Title(props) {
   };
 
   const handleToggle = () => {
-      const eleBold = document.getElementsByClassName('bold')[0];
-      if(eleBold) {
-        if(eleBold.classList.contains('active')) {
-          eleBold.classList.add('active')
-
-        } else {
-          eleBold.classList.remove('active')
-        }
+    const eleBold = document.getElementsByClassName('bold')[0];
+    if(eleBold) {
+      if(eleBold.classList.contains('activebold')) {
+        eleBold.classList.remove('activebold')
+      } else {
+        eleBold.classList.add('activebold')
       }
+    }
       // if(eleBold) {
       //   eleBold.classList.add('active')
       // }else{
@@ -73,9 +72,12 @@ function Title(props) {
 
       const eleInput = document.getElementsByClassName('box_request1')[0];
       if(eleInput) {
-        eleInput.classList.add('active')
-      }  else {
-        eleInput.classList.remove('active')
+        if(eleInput.classList.contains('activebold')) {
+          eleInput.classList.remove('activebold')
+
+        } else {
+          eleInput.classList.add('activebold')
+        }
       }
   }
 
@@ -306,31 +308,13 @@ const handleToggle8 = () => {
                     value={retouchRequest}
                   />
                   <div className='box_request2'>
-                  <CKEditor
-                    editor={ ClassicEditor }
-                    data="<p>Hello from CKEditor 5!</p>"
-                    onReady={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
-                    onChange={ ( event, editor ) => {
-                        const data = editor.getData();
-                        console.log( { event, editor, data } );
-                    } }
-                    onBlur={ ( event, editor ) => {
-                        console.log( 'Blur.', editor );
-                    } }
-                    onFocus={ ( event, editor ) => {
-                        console.log( 'Focus.', editor );
-                    } }
-                />
                     <div className='box_requesticon1' >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6667 6.66671C11.403 6.66671 12 6.06975 12 5.33337C12 4.59699 11.403 4.00004 10.6667 4.00004C9.93029 4.00004 9.33333 4.59699 9.33333 5.33337C9.33333 6.06975 9.93029 6.66671 10.6667 6.66671Z" fill="#A3A3A3" />
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M1.33333 3.33337C1.33333 2.2288 2.22876 1.33337 3.33333 1.33337H12.6667C13.7712 1.33337 14.6667 2.2288 14.6667 3.33337V12.6667C14.6667 13.7713 13.7712 14.6667 12.6667 14.6667H3.33333C2.22876 14.6667 1.33333 13.7713 1.33333 12.6667V3.33337ZM3.33333 2.66671H12.6667C13.0349 2.66671 13.3333 2.96518 13.3333 3.33337V12.6667C13.3333 12.8186 13.2825 12.9587 13.197 13.0708C13.1765 13.0436 13.1544 13.017 13.1306 12.991L7.04603 6.35329C6.22784 5.46072 4.81044 5.49418 4.03528 6.42437L2.66667 8.06671V3.33337C2.66667 2.96518 2.96514 2.66671 3.33333 2.66671ZM2.66667 10.1494V12.6667C2.66667 13.0349 2.96514 13.3334 3.33333 13.3334H11.6357L6.06316 7.25425C5.79043 6.95673 5.31796 6.96789 5.05958 7.27795L2.66667 10.1494Z" fill="#A3A3A3" />
                       </svg>
                     </div>
-                    <div className='box_requesticon1 bold' onClick={() => handleToggle()} >
+                    <div className='box_requesticon1 bold'  onClick={() => handleToggle()} >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M4 4.18182C4 2.97683 4.97683 2 6.18182 2H8.66667C10.5076 2 12 3.49238 12 5.33333C12 6.28714 11.5994 7.14738 10.9573 7.75497C11.9771 8.32499 12.6667 9.4153 12.6667 10.6667C12.6667 12.5076 11.1743 14 9.33333 14H6.16667C4.97005 14 4 13.03 4 11.8333V4.18182ZM6.18182 3.33333H8.66667C9.77124 3.33333 10.6667 4.22876 10.6667 5.33333C10.6667 6.4379 9.77124 7.33333 8.66667 7.33333H5.33333V4.18182C5.33333 3.71321 5.71321 3.33333 6.18182 3.33333ZM5.33333 8.66667V11.8333C5.33333 12.2936 5.70643 12.6667 6.16667 12.6667H9.33333C10.4379 12.6667 11.3333 11.7712 11.3333 10.6667C11.3333 9.5621 10.4379 8.66667 9.33333 8.66667H5.33333Z" fill="#A3A3A3" />
                       </svg>
